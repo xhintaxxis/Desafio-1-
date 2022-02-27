@@ -1,0 +1,78 @@
+//C++
+int inx=0;
+int times=3;
+int bandera=40;
+int cont=0;
+int arr[8];
+char cadena[60]={23,40,40,40,65,40,20,20,40,10,40,78,20,67,40,40,40,71,40,66,70,40,40,69,40,40,41,40,76};
+char salida[63];
+int vrb1=0;
+void setup(){
+  pinMode(13,OUTPUT);
+  pinMode(12,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(8,OUTPUT);
+  Serial.begin(9600); 
+  while(*(cadena+inx)!='\0'){
+    inx++;
+  }
+  salida[0]=times;
+  salida[1]=bandera;
+  salida[2]=inx;
+  ////////
+  vrb1=bandera;
+    for(int i=7;i>=0;i--){
+    int res=vrb1&0b00000001;
+    vrb1=vrb1>>1;
+    arr[i]=(res);
+	}
+    for(int i=0;i<8;i++){
+      Serial.print(arr[i]);
+      digitalWrite(10,arr[i]);
+      delay(1);
+      digitalWrite(9,1);
+      delay(1);
+      digitalWrite(9,0);
+      delay(1);
+    }
+    digitalWrite(8,1);
+    delay(1);
+    digitalWrite(8,0);
+    delay(1);
+    Serial.println();
+  
+  ////////
+  for(int i=3;i<inx+3;i++){
+    salida[i]=cadena[i-3];
+  }
+  for(int i=0;i<inx+3;i++){
+    Serial.println(int(salida[i]));
+  }
+  while(*(salida+cont)!=inx+3){
+    vrb1=salida[cont];
+    for(int i=7;i>=0;i--){
+    int res=vrb1&0b00000001;
+    vrb1=vrb1>>1;
+    arr[i]=(res);
+	}
+    for(int i=0;i<8;i++){
+      Serial.print(arr[i]);
+      digitalWrite(13,arr[i]);
+      delay(1);
+      digitalWrite(12,1);
+      delay(1);
+      digitalWrite(12,0);
+      delay(1);
+    }
+    digitalWrite(11,1);
+    delay(1);
+    digitalWrite(11,0);
+    delay(1);
+    Serial.println();
+    cont++;
+  }
+}
+void loop(){
+}
