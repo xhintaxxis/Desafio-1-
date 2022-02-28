@@ -1,10 +1,10 @@
 //C++
 int inx=0;
 int times=3;
-int bandera=40;
 int cont=0;
 int arr[8];
-char cadena[60]={23,40,40,40,65,40,20,20,40,10,40,78,20,67,40,40,40,71,40,66,70,40,40,69,40,40,41,40,76};
+int bandera=98;
+char cadena[60]={23,98,98,98,65,98,20,20,98,10,98,78,20,67,98,98,98,71,98,66,70,98,98,69,98,98,41,98,76};
 char salida[63];
 int vrb1=0;
 void setup(){
@@ -19,8 +19,7 @@ void setup(){
     inx++;
   }
   salida[0]=times;
-  salida[1]=bandera;
-  salida[2]=inx;
+  salida[1]=inx;
   ////////
   vrb1=bandera;
     for(int i=7;i>=0;i--){
@@ -44,13 +43,13 @@ void setup(){
     Serial.println();
   
   ////////
-  for(int i=3;i<inx+3;i++){
-    salida[i]=cadena[i-3];
+  for(int i=2;i<inx+2;i++){
+    salida[i]=cadena[i-2];
   }
-  for(int i=0;i<inx+3;i++){
+  for(int i=0;i<inx+2;i++){
     Serial.println(int(salida[i]));
   }
-  while(*(salida+cont)!=inx+3){
+  while(*(salida+cont)!=inx+2){
     vrb1=salida[cont];
     for(int i=7;i>=0;i--){
     int res=vrb1&0b00000001;
