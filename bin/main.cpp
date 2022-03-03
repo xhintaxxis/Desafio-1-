@@ -19,6 +19,7 @@ cout<<endl;
 int salida=0;
 int potencia=1;
 int c=7;
+//ciclo para convertir de binario a entero
  for(int i=0;i<8;i++){
    for(int j=1;j<=c;j++){
      potencia=potencia*2;
